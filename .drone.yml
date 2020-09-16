@@ -1,10 +1,22 @@
+---
 kind: pipeline
 type: docker
 name: default
 
+workspace:
+  path: /www/drone-go-test 
+
+clone:
+  disable: true
+
 steps:
-- name: greeting
-  image: alpine
+- name: clone
+  image: alpine/git
   commands:
-  - echo hello
-  - echo world
+  - git clone https://github.com/isesame-Ch/drone_test_pub.git .
+
+- name: build
+  image: golang
+  commands:
+  - go build
+  - go test
