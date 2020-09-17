@@ -8,8 +8,6 @@ clone:
 steps:
 - name: clone
   image: alpine/git
-  commands:
-    - git clone -v https://github.com/isesame-Ch/drone_test_pub.git .
 - name: build
   image: golang
   commands:
