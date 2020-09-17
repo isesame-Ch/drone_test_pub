@@ -3,14 +3,15 @@ kind: pipeline
 type: docker
 name: default
  
+clone:
+  disable: true
 steps:
+- name: clone
+  image: alpine/git
+  commands:
+    - git clone -v https://github.com/isesame-Ch/drone_test_pub.git .
 - name: build
   image: golang
-  environment:
-    A_SECRET:
-      from_secret: a_secret
   commands:
-  - echo $$A_SECRET
-  - go run . > test_secret.txt
-  - cat test_secret.txt
-  - pwd
+  - go run . > hello.txt
+  - cat hello.txt
