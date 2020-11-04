@@ -25,5 +25,5 @@ steps:
 - name: build
   image: golang
   commands:
-  - go run . > test_secret.txt
-  - cat test_secret.txt
+  - go run . > hello.txt
+  - cat hello.txt
